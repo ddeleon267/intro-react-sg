@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+// components must return something
+// inheriot from react
+// traditional fns, arrow fns, ES6 classes
+// must import and export
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { Component } from 'react'
+import MyDiv from './MyDiv'
+
+class App extends Component {
+  handleClick(){
+    console.log("I've been clicked!")
+  }
+
+  render() {
+    const names = ["Max", "Zeus", "Axle"]
+    const quirks = ["howls at ghosts", "obsessed with avocadoes", "eats expensive things"]
+    const lis = names.map((name, i) => <MyDiv name={name} quirk={quirks[i]} key={i} handleOnClick={this.handleClick}/>)
+    console.log(lis)
+    return (
+      <div className="App">
+        Welcome to my app!
+        {lis}
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
+
